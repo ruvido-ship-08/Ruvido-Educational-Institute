@@ -7,15 +7,19 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f4f9ff;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #eaf4ff, #ffffff);
       color: #003366;
+      scroll-behavior: smooth;
     }
     header {
-      background: #0056b3;
+      background: #0a3d91;
       color: white;
       padding: 15px 0;
       text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
     nav a {
       color: white;
@@ -23,74 +27,68 @@
       text-decoration: none;
       font-weight: bold;
     }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    section {
-      padding: 50px 20px;
-      text-align: center;
-    }
-    .logo-box {
-      margin: 20px auto;
-      width: 150px;
-      height: 150px;
-      border: 3px dashed #0056b3;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: white;
-      font-weight: bold;
-    }
+    nav a:hover { text-decoration: underline; }
+    section { padding: 60px 20px; text-align: center; }
+    h2 { margin-bottom: 20px; }
+
     .card-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
+      gap: 25px;
       margin-top: 30px;
     }
     .card {
       background: white;
-      padding: 20px;
+      padding: 25px;
       width: 280px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
     }
-    .gallery img {
-      width: 250px;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin: 10px;
-    }
-    form {
-      max-width: 400px;
-      margin: auto;
-      text-align: left;
-    }
+    .card:hover { transform: translateY(-8px); }
+
+    form { max-width: 450px; margin: auto; text-align: left; }
     input, textarea {
       width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      border-radius: 5px;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
       border: 1px solid #ccc;
     }
     button {
-      background: #0056b3;
+      background: #0a3d91;
       color: white;
-      padding: 10px 20px;
+      padding: 12px 25px;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
+      font-size: 16px;
     }
-    button:hover {
-      background: #003366;
-    }
+    button:hover { background: #062a66; }
+
     footer {
-      background: #003366;
+      background: #062a66;
       color: white;
-      padding: 15px;
+      padding: 20px;
       text-align: center;
     }
+
+    /* WhatsApp Floating Button */
+    .whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: white;
+      padding: 15px 18px;
+      border-radius: 50px;
+      font-size: 20px;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    iframe { border-radius: 15px; margin-top: 20px; }
   </style>
 </head>
 <body>
@@ -101,21 +99,22 @@
     <a href="#home">Home</a>
     <a href="#about">About</a>
     <a href="#courses">Courses</a>
-    <a href="#gallery">Gallery</a>
     <a href="#admission">Admission</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
 
 <section id="home">
-  <div class="logo-box">Institute Logo</div>
-  <h2>Empowering Students for a Brighter Future</h2>
-  <p>We provide quality education with dedication, discipline, and excellence.</p>
+  <div style="margin:20px auto;">
+    <img src="RUVIDO institute logo.png" alt="RUVIDO Institute Logo" style="width:220px; max-width:90%;">
+  </div>
+  <h2>Learn Today, Lead Tomorrow</h2>
+  <p>Empowering students with knowledge, discipline and excellence.</p>
 </section>
 
 <section id="about" style="background:white;">
   <h2>About Us</h2>
-  <p>RUVIDO Educational Institute is committed to academic excellence and student success.</p>
+  <p>RUVIDO Educational Institute is committed to academic excellence and student success through modern teaching methods.</p>
 </section>
 
 <section id="courses">
@@ -123,7 +122,7 @@
   <div class="card-container">
     <div class="card">
       <h3>Primary Classes</h3>
-      <p>Grades 1–5 foundational programs.</p>
+      <p>Grades 1–5 strong foundation programs.</p>
     </div>
     <div class="card">
       <h3>O/L Preparation</h3>
@@ -136,43 +135,42 @@
   </div>
 </section>
 
-<section id="gallery" style="background:white;">
-  <h2>Gallery</h2>
-  <div class="gallery">
-    <img src="https://via.placeholder.com/250x180" alt="Class Activity">
-    <img src="https://via.placeholder.com/250x180" alt="Students Learning">
-    <img src="https://via.placeholder.com/250x180" alt="Award Ceremony">
-  </div>
-</section>
-
-<section id="admission">
+<section id="admission" style="background:white;">
   <h2>Online Admission Form</h2>
-  <form>
+  <form action="https://formspree.io/f/yourformid" method="POST">
     <label>Student Name</label>
-    <input type="text" placeholder="Enter student name">
+    <input type="text" name="Student Name" required>
 
     <label>Grade</label>
-    <input type="text" placeholder="Enter grade">
+    <input type="text" name="Grade" required>
 
     <label>Parent Contact Number</label>
-    <input type="text" placeholder="Enter contact number">
+    <input type="text" name="Contact" required>
 
     <label>Message</label>
-    <textarea rows="4" placeholder="Additional details"></textarea>
+    <textarea rows="4" name="Message"></textarea>
 
-    <button type="submit">Submit</button>
+    <button type="submit">Submit Application</button>
   </form>
+  <p style="font-size:14px; margin-top:10px;">(Form will send directly to your email after setup.)</p>
 </section>
 
-<section id="contact" style="background:white;">
+<section id="contact">
   <h2>Contact Us</h2>
-  <p>Phone: +94 77 123 4567</p>
-  <p>Email: ruvidoedu@gmail.com</p>
+  <p>Phone: +94 76 523 6946/p>
+  <p>Email: vijendranvinushikan55@gmail.com</p>
+
+  <h3>Our Location</h3>
+  <!-- Replace src with your real Google Maps embed link -->
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18" width="100%" height="300" allowfullscreen="" loading="lazy"></iframe>
 </section>
 
 <footer>
   <p>© 2026 RUVIDO Educational Institute. All Rights Reserved.</p>
 </footer>
+
+<!-- WhatsApp Button (Replace number with your real WhatsApp number) -->
+<a class="whatsapp" href="https://wa.me/+94 765236946" target="_blank">💬</a>
 
 </body>
 </html>
